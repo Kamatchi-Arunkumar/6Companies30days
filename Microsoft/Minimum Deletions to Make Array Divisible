@@ -1,0 +1,25 @@
+class Solution {
+    public int minOperations(int[] nums, int[] numsDivide) {
+        int result=numsDivide[0];
+        for(int i=1; i<numsDivide.length; i++){
+            result = findGCD(numsDivide[i], result);
+    }
+        Arrays.sort(nums);
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            if(result%nums[i]!=0){
+                count++;
+            }
+            else{
+                return count;
+            }
+        }
+        return -1;
+    }
+    public static int findGCD(int a, int b){
+        if(b == 0){
+            return a;
+        }
+    return findGCD(b, a%b);
+  }
+}
