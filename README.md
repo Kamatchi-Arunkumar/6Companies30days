@@ -1,2 +1,2 @@
 # 6Companies30days
-This repository will help you to crack problems easily
+This challenge is given by KPRIET-CDC to crack the problems easily with algorithms
