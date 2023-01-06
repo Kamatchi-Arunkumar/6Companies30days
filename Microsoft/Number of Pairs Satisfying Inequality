@@ -1,0 +1,29 @@
+class Solution {
+    public long numberOfPairs(int[] nums1, int[] nums2, int diff) {
+        int n = nums1.length;
+        for(int i=0; i<n; i++){
+            nums1[i] -= nums2[i];
+        }
+        List<Integer> d = new ArrayList<>();
+        long ans = 0;
+        for(int i=0; i<n; i++){
+            ans += binarySearch(d, nums1[i]+diff);
+            d.add(binarySearch(d, nums1[i]), nums1[i]);
+        }
+        return ans;
+    }
+    private int binarySearch(List<Integer> d, int num){
+        int start = 0;
+        int end = d.size();
+        while(start<end){
+            int mid = start+(end-start)/2;
+            if(d.get(mid)<=num){
+                start = mid+1;
+            }
+            else{
+                end = mid;
+            }
+        }
+        return start;
+    }
+}
